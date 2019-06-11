@@ -109,12 +109,17 @@ class CodescanExportCommand extends Command {
     fs.writeSync(this.fd, newLine + "\n");
   }
 
-  writeIssues(issues){
-    issues.forEach(issue=>{
+  writeIssues(res){
+    let rules = [];
+    res['rules'].forEach(rule=>{
+      rules[rule['key']] = rule['name']
+    })
+    res['issues'].forEach(issue=>{
       this.writeRow([
         issue.creationDate,
         issue.updateDate,
         issue.rule,
+        rules[issue.rule],
         issue.status,
         issue.severity,
         issue.component,
@@ -123,9 +128,7 @@ class CodescanExportCommand extends Command {
         issue.type,
         issue.author,
         issue.tags.join(", "),
-        issue.fromHotspot,
-        issue.language,
-        issue.repository
+        issue.fromHotspot
       ]);
     });
   }
@@ -153,6 +156,7 @@ class CodescanExportCommand extends Command {
       "Creation Date",
       "Update Date",
       "Rule",
+      "Rule Name",
       "Status",
       "Severity",
       "File",
@@ -161,15 +165,14 @@ class CodescanExportCommand extends Command {
       "IssueType",
       "Author",
       "Tags",
-      "From Hotspot",
-      "Language",
-      "Repository"
+      "From Hotspot"
     ]);
 
     let qs = {
       componentKeys: this.projectKey,
       p: 1,
-      ps: 500
+      ps: 500,
+      additionalFields: "rules"
     }
     CodescanExportCommand.configurationKeys.forEach(key=>{
       if ( flags[key] ){
@@ -182,7 +185,7 @@ class CodescanExportCommand extends Command {
       this.exit(1);
     });
     while ( res['issues'].length > 0 ){
-      this.writeIssues(res['issues']);
+      this.writeIssues(res);
       qs.p ++;
 
       res = await this.getJson('/api/issues/search', {qs: qs}).catch(err => {
