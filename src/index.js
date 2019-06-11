@@ -45,19 +45,19 @@ class CodescanExportCommand extends Command {
   }
 
   async getProjectKey(){
-    let ret = await this.getJson('/api/projects/index');
+    let ret = await this.getJson('/api/components/search', {qs: {qualifiers: 'TRK', organization: this.organizationKey}});
     let valid = false;
     let projectKey;
     while ( !valid ){
       this.log("")
       this.log("Choose your projectKey");
-      ret.forEach((v)=>{
-        this.log(v.k + ": " + v.nm);
+      ret['components'].forEach((v)=>{
+        this.log(v.key + ": " + v.name);
       });
 
       projectKey = await cli.prompt('Choose projectKey');
-      ret.forEach((v)=>{
-        if ( v.k == projectKey ){
+      ret['components'].forEach((v)=>{
+        if ( v.key == projectKey ){
           valid = true;
         }
       });
