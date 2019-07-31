@@ -255,12 +255,12 @@ CodescanExportCommand.flags = {
   sinceLeakPeriod: flags.string({description: "To retrieve issues created since the leak period.\n" +
     "If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided.\n\n" +
     "Possible values: true, false, yes, no"}),
-  statuses: flags.string({description: "Comma-separated list of severities\n\n" +
+  statuses: flags.string({description: "Comma-separated list of statuses\n\n" +
     "Possible values: OPEN, CONFIRMED, REOPENED, RESOLVED, CLOSED\n" +
     "Example value: OPEN,REOPENED"}),
-  tags: flags.string({description: "Comma-separated list of severities\n\n" +
+  tags: flags.string({description: "Comma-separated list of tags\n\n" +
     "Example value: security,convention"}),
-  types: flags.string({description: "Comma-separated list of severities\n\n" +
+  types: flags.string({description: "Comma-separated list of types\n\n" +
     "Possible values: CODE_SMELL, BUG, VULNERABILITY, SECURITY_HOTSPOT\n" +
     "Default value: BUG,VULNERABILITY,CODE_SMELL\n" +
     "Example value: CODE_SMELL,BUG"}),
