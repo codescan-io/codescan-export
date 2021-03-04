@@ -9,6 +9,7 @@ class CodescanExportCommand extends Command {
     options = options || {
     };
     options.json = options.json || true;
+    options.rejectUnauthorized = false;
     options.headers = options.headers || {};
     options['uri'] = this.server + path;
     options['headers']["Authorization"] = "Basic " + new Buffer(this.token + ":").toString("base64");
