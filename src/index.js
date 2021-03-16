@@ -9,7 +9,7 @@ class CodescanExportCommand extends Command {
     options = options || {
     };
     options.json = options.json || true;
-    options.rejectUnauthorized = false;
+    options.rejectUnauthorized = this.verifySslCa;
     options.headers = options.headers || {};
     options['uri'] = this.server + path;
     options['headers']["Authorization"] = "Basic " + new Buffer(this.token + ":").toString("base64");
@@ -152,6 +152,7 @@ class CodescanExportCommand extends Command {
     this.quote = flags.quote || '"';
     this.delimiter = flags.delimiter || ',';
     this.escape = flags.escape || '"';
+    this.verifySslCa = flags.verifySslCa;
 
     this.writeRow([
       "Creation Date",
@@ -265,6 +266,8 @@ CodescanExportCommand.flags = {
     "Possible values: CODE_SMELL, BUG, VULNERABILITY, SECURITY_HOTSPOT\n" +
     "Default value: BUG,VULNERABILITY,CODE_SMELL\n" +
     "Example value: CODE_SMELL,BUG"}),
+
+  verifySslCa: flags.boolean({default: true, description: "Use --no-verifySslCa to skip verification of the server certificate against the list of supplied CAs.\nThis can be helpful in case of using self-signed certificates.\n", allowNo: true}),
 }
 CodescanExportCommand.args = [
   {name: 'organizationKey'},
