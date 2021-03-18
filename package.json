@@ -1,12 +1,12 @@
 {
   "name": "codescan-export",
   "description": "Export CodeScan issues from the command line",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "CodeScan by VillageChief",
   "bin": {
     "codescan-export": "./bin/run"
   },
-  "bugs": "https://github.com/https://github.com/villagechief/codescan-export/https://github.com/villagechief/codescan-export/issues",
+  "bugs": "https://github.com/villagechief/codescan-export/issues",
   "dependencies": {
     "@oclif/command": "^1.5.14",
     "@oclif/config": "^1.13.0",
@@ -30,7 +30,7 @@
     "/bin",
     "/src"
   ],
-  "homepage": "https://github.com/https://github.com/villagechief/codescan-export/https://github.com/villagechief/codescan-export",
+  "homepage": "https://github.com/villagechief/codescan-export/",
   "keywords": [
     "oclif"
   ],
@@ -39,7 +39,7 @@
   "oclif": {
     "bin": "codescan-export"
   },
-  "repository": "https://github.com/villagechief/codescan-export/https://github.com/villagechief/codescan-export",
+  "repository": "https://github.com/villagechief/codescan-export",
   "scripts": {
     "posttest": "eslint .",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\""
