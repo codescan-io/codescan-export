@@ -1,7 +1,7 @@
 {
   "name": "codescan-export",
   "description": "Export CodeScan issues from the command line",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "CodeScan by VillageChief",
   "bin": {
     "codescan-export": "./bin/run"

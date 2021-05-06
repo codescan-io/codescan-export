@@ -129,7 +129,8 @@ class CodescanExportCommand extends Command {
         issue.type,
         issue.author,
         issue.tags.join(", "),
-        issue.fromHotspot
+        issue.fromHotspot,
+        issue.key
       ]);
     });
   }
@@ -167,7 +168,8 @@ class CodescanExportCommand extends Command {
       "IssueType",
       "Author",
       "Tags",
-      "From Hotspot"
+      "From Hotspot",
+      "Issue Key"
     ]);
 
     let qs = {
