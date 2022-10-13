@@ -279,6 +279,7 @@ CodescanExportCommand.configurationKeys = [
   'assigned',
   'assignees',
   'author',
+  'branch',
   'createdAfter',
   'createdAt',
   'createdBefore',
