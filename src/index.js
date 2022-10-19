@@ -231,6 +231,8 @@ CodescanExportCommand.flags = {
   assignees: flags.string({description: "Comma-separated list of assignee logins.\n" +
     "The value '__me__' can be used as a placeholder for user who performs the request\n\n" +
     "Example value: admin,usera,__me__"}),
+  branch:flags.string({description: "The branch. To pull from a non-main branch, the parameter must specify the branch name.\n\n" +
+    "Example value: dev"}),
   author: flags.string({description: "SCM accounts. To set several values, the parameter must be called once for each value.\n\n" +
     "Example value: author=torvalds@linux-foundation.org&author=linux@fondation.org"}),
   createdAfter: flags.string({description: "To retrieve issues created after the given date (inclusive).\n" +
@@ -279,6 +281,7 @@ CodescanExportCommand.configurationKeys = [
   'assigned',
   'assignees',
   'author',
+  'branch',
   'createdAfter',
   'createdAt',
   'createdBefore',
