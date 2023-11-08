@@ -258,6 +258,9 @@ CodescanExportCommand.flags = {
   severities: flags.string({description: "Comma-separated list of severities\n\n" +
     "Possible values: INFO, MINOR, MAJOR, CRITICAL, BLOCKER\n" +
     "Example value: BLOCKER,CRITICAL"}),
+  inNewCodePeriod: flags.string({description: "To retrieve issues in the new code period.\n" +
+    "If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided.\n\n" +
+    "Possible values: true, false, yes, no"}),
   sinceLeakPeriod: flags.string({description: "To retrieve issues created since the leak period.\n" +
     "If this parameter is set to a truthy value, createdAfter must not be set and one component id or key must be provided.\n\n" +
     "Possible values: true, false, yes, no"}),
@@ -270,6 +273,8 @@ CodescanExportCommand.flags = {
     "Possible values: CODE_SMELL, BUG, VULNERABILITY, SECURITY_HOTSPOT\n" +
     "Default value: BUG,VULNERABILITY,CODE_SMELL\n" +
     "Example value: CODE_SMELL,BUG"}),
+  pullRequest:flags.string({description: "The pull request. To pull from a non-main branch, the parameter must specify the pull request name.\n\n" +
+  "Example value: dev"}),
 
   verifySslCa: flags.boolean({default: true, description: "Use --no-verifySslCa to skip verification of the server certificate against the list of supplied CAs.\nThis can be helpful in case of using self-signed certificates.\n", allowNo: true}),
 }
@@ -293,7 +298,9 @@ CodescanExportCommand.configurationKeys = [
   'sinceLeakPeriod',
   'statuses',
   'tags',
-  'types'
+  'types',
+  'pullRequest',
+  'inNewCodePeriod'
 ];
 
 module.exports = CodescanExportCommand
