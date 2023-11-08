@@ -33,7 +33,7 @@ It is recommended that you create an environment variable for your CodeScan Clou
 
 With the token set as an environment variable you can run the tool with the following command. 
 
-`codescan-export [ORGANISATION KEY] [PROJECT KEY]`
+`codescan-export [ORGANISATION KEY] [PROJECT KEY] -f output.csv`
 
 [How to find your Organisation Key](https://docs.codescan.io/hc/en-us/articles/360020037992-How-to-find-an-Organization-Key-in-CodeScan-Cloud)
 
@@ -41,7 +41,7 @@ With the token set as an environment variable you can run the tool with the foll
 
 Without the token set as an environment variable you can run the tool with the following command. Click on the links for information on how to find the keys.
 
-`CODESCAN_TOKEN=[TOKEN] codescan-export [ORGANISATION KEY] [PROJECT KEY]`
+`CODESCAN_TOKEN=[TOKEN] codescan-export [ORGANISATION KEY] [PROJECT KEY] -f output.csv`
 
 [Generate your Security Token](https://app.codescan.io/account/security/)
 
